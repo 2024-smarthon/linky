@@ -85,12 +85,13 @@ const signUp = (id, password, passwordCheck) => {
 const showCoffees = () => {
     let output = '';
     coffees.forEach(
-        ({ name, image }) =>
+        ({ name, image }, idx) =>
             (output += `
               <div class="card">
                 <img class="card--avatar" src="https://source.unsplash.com/random/?programming/300x300""/>
                 <h1 class="card--title">${name}</h1>
-                <a class="card--link" href="#">멘토 신청하기</a>
+                <a class="card--link" href="pages/detail.html?id=${idx}">상세 보기</a>
+
               </div>
               `)
     );
