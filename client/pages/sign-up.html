@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 가입</title>
+    <style>
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #20CE6F;
+
+
+        }
+        
+        h1 {
+
+            margin-bottom: 0px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+            color: #000;
+
+            font-family: Inter, Arial, sans-serif;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            
+            width: 100%;
+            padding: 10px;
+            font-size: 13px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            color: var(--Gray-4, #000);
+            font-family: Inter, Arial, sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+        
+        button {
+            width: 100%;
+            padding: 10px;
+            background:#20CE6F;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        form {
+       
+            padding: 20px 20px 20px 0px;
+          
+        }
+        button:hover {
+            background-color:  #01A862;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>회원가입</h1>
+        <form>
+            <div class="form-group">
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" placeholder="이름을 작성해주세요" required>
+            </div>
+            <div class="form-group">
+                <label for="email">이메일</label>
+                <input type="email" id="email" name="email" placeholder="이메일을 작성해주세요" required>
+            </div>
+            <div class="form-group">
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" name="password" placeholder="비밀번호를 작성해주세요" required>
+            </div>
+            <div class="form-group">
+                <label for="job">직업</label>
+                <input type="text" id="job" name="job" placeholder="직업을 작성해주세요">
+            </div>
+            <div class="form-group">
+                <label for="salary">희망 보수</label>
+                <input type="text" id="salary" name="salary" placeholder="희망 보수를 작성해주세요">
+            </div>
+            <div class="form-group">
+                <label for="category">카테고리</label>
+                <input type="text" id="category" name="category" placeholder="카테고리를 작성해주세요">
+            </div>
+            <div class="form-group">
+                <label for="intro">한줄 소개</label>
+                <input type="text" id="intro" name="intro" placeholder="한줄 소개를 작성해주세요">
+            </div>
+        
+        </form>
+        <button type="submit">가입하기</button>
+    </div>
+</body>
+</html>
