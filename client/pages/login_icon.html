@@ -6,7 +6,7 @@
 <title>가운데 이미지와 텍스트</title>
 <style>
     body {
-        margin: 0;
+        margin: 85px;
         padding: 0;
         font-family: Arial, sans-serif;
         text-align: center;
@@ -35,7 +35,7 @@
         font-weight: 600;
         line-height: normal;
         letter-spacing: -1.5px;
-        margin-top: 10;
+        margin-top: 10px;
     }
 
     .login-buttons-id {
@@ -62,6 +62,13 @@
         cursor: pointer; /* 커서를 손가락 모양으로 변경 */
         font-size: 16px; /* 텍스트 크기 조절 */
         text-decoration: underline; /* 밑줄 추가 */
+    }
+
+    /* 모바일에서 마진을 70픽셀로 설정 */
+    @media screen and (max-width: 768px) {
+        .login-buttons-id { 
+            margin-top: 70px;
+        }
     }
 </style>
 </head>
