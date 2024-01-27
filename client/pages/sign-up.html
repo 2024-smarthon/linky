@@ -1,162 +1,285 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원 가입</title>
-    <style>
-        body {
-            font-family: Inter, Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .container {
-            max-width: 400px;
-            margin: 0px auto ;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            color: #20CE6F;
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>회원 가입</title>
+        <style>
+            body {
+                font-family: Inter, Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
 
+            .container {
+                max-width: 400px;
+                margin: 0 auto;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                color: #20ce6f;
+            }
 
-        }
-        
-        h1 {
+            h1 {
+                margin-bottom: 0px;
+            }
 
-            margin-bottom: 0px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .select {
-            padding: 15px 0px;
-        }
-        .select input[type=radio]{
-            display: none;
-        }
-        .select input[type=radio]+label{
-            display: inline-block;
-            cursor: pointer;
-            height: 24px;
-            width: 90px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            line-height: 24px;
-            text-align: center;
-            font-weight:bold;
-            font-size:13px;
-        }
-        .select input[type=radio]+label{
+            .form-group {
+                margin-bottom: 20px;
+            }
+            .select {
+                padding: 15px 0px;
+            }
+            .select input[type='radio'] {
+                display: none;
+            }
+            .select input[type='radio'] + label {
+                display: inline-block;
+                cursor: pointer;
+                height: 24px;
+                width: 90px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                line-height: 24px;
+                text-align: center;
+                font-weight: bold;
+                font-size: 13px;
+            }
+            .select input[type='radio'] + label {
+                background-color: #fff;
+                color: #333;
+            }
+            .select input[type='radio']:checked + label {
+                background-color: #20ce6f;
+                color: #fff;
+            }
+            label {
+                display: block;
+                font-weight: bold;
+                color: #000;
 
-            background-color: #fff;
-            color:#333;
-        }
-        .select input[type=radio]:checked+label{
-            background-color: #20CE6F;
-            color: #fff;
-        }
-        label {
-            display: block;
-            font-weight: bold;
-            color: #000;
+                font-family: Inter, Arial, sans-serif;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                margin-bottom: 5px;
+            }
 
-            font-family: Inter, Arial, sans-serif;
-            font-size: 15px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-            margin-bottom: 5px;
-        }
-        
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-            
-            width: 100%;
-            padding: 10px;
-            font-size: 13px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f2f2f2;
-            color: var(--Gray-4, #000);
-            font-family: Inter, Arial, sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-        }
-        
-        button {
-            width: 100%;
-            padding: 10px;
-            background:#20CE6F;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        form {
-       
-            padding: 20px 20px 20px 0px;
-          
-        }
-        button:hover {
-            background-color:  #01A862;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>회원가입</h1>
-        <form>
-            <div class="select">
-                <label for="name">멘토/멘티</label>
-                <input type="radio" id="select" name="shop"><label for="select">멘토</label>
-                <input type="radio" id="select2" name="shop"><label for="select2">멘티</label>
-           </div>
+            input[type='text'],
+            input[type='email'],
+            input[type='password'] {
+                width: 100%;
+                padding: 10px;
+                font-size: 13px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f2f2f2;
+                color: var(--Gray-4, #000);
+                font-family: Inter, Arial, sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
 
-            <div class="form-group">
-                <label for="name">이름</label>
-                <input type="text" id="name" name="name" placeholder="이름을 작성해주세요" required>
-            </div>
+            button {
+                width: 100%;
+                padding: 10px;
+                background: #20ce6f;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            form {
+                padding: 20px 20px 20px 0px;
+            }
+            button:hover {
+                background-color: #01a862;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>회원가입</h1>
+            <form class="signupForm">
+                <div class="select">
+                    <label for="name">멘토/멘티</label>
+                    <input type="radio" id="mentor" name="side" onclick="handleRoleChange('mentor')" /><label
+                        for="mentor"
+                        >멘토</label
+                    >
+                    <input type="radio" id="mentee" name="side" onclick="handleRoleChange('mentee')" />
+                    <label for="mentee">멘티</label>
+                </div>
 
-        
+                <div class="form-group">
+                    <label for="name">이름</label>
+                    <input type="text" id="name" name="name" placeholder="이름을 작성해주세요" required />
+                </div>
 
-            <div class="form-group">
-                <label for="email">이메일</label>
-                <input type="email" id="email" name="email" placeholder="이메일을 작성해주세요" required>
-            </div>
-            <div class="form-group">
-                <label for="password">비밀번호</label>
-                <input type="password" id="password" name="password" placeholder="비밀번호를 작성해주세요" required>
-            </div>
-            <div class="form-group">
-                <label for="password">비밀번호 확인</label>
-                <input type="password" id="password" name="password" placeholder="비밀번호를 다시 작성해주세요" required>
-            </div>
-            <div class="form-group">
-                <label for="job">직업</label>
-                <input type="text" id="job" name="job" placeholder="직업을 작성해주세요">
-            </div>
-            <div class="form-group">
-                <label for="salary">희망 보수</label>
-                <input type="text" id="salary" name="salary" placeholder="희망 보수를 작성해주세요">
-            </div>
-            <div class="form-group">
-                <label for="category">카테고리</label>
-                <input type="text" id="category" name="category" placeholder="카테고리를 작성해주세요">
-            </div>
-            <div class="form-group">
-                <label for="intro">한줄 소개</label>
-                <input type="text" id="intro" name="intro" placeholder="한줄 소개를 작성해주세요">
-            </div>
-        
-        </form>
-        <button type="submit">가입하기</button>
-    </div>
-</body>
+                <div class="form-group">
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" name="email" placeholder="이메일을 작성해주세요" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">비밀번호</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="비밀번호를 작성해주세요"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="password">비밀번호 확인</label>
+                    <input
+                        type="password"
+                        id="passwordCheck"
+                        name="password"
+                        placeholder="비밀번호를 다시 작성해주세요"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="job">직업</label>
+                    <input type="text" id="job" name="job" placeholder="직업을 작성해주세요" />
+                </div>
+                <div class="form-group">
+                    <label for="salary">희망 보수</label>
+                    <input type="text" id="salary" name="salary" placeholder="희망 보수를 작성해주세요" />
+                </div>
+                <div class="form-group">
+                    <label for="field">카테고리</label>
+                    <input type="text" id="field" name="field" placeholder="카테고리를 작성해주세요" />
+                </div>
+                <div class="form-group">
+                    <label for="description">한줄 소개</label>
+                    <input type="text" id="description" name="description" placeholder="한줄 소개를 작성해주세요" />
+                </div>
+            </form>
+            <button type="submit" form="signupForm" onclick="getFormValues()">가입하기</button>
+        </div>
+    </body>
+    <script>
+        const API_URL = 'http://127.0.0.1:5000';
+        const mentorSignUp = async (email, password, name, field, price, job, description) => {
+            // default data
+            const asked = [''];
+            const status = false;
+            const review = [''];
+
+            const response = await fetch(`${API_URL}/mentor`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    asked,
+                    description,
+                    email,
+                    field,
+                    job,
+                    name,
+                    price,
+                    pwd: password,
+                    review,
+                    status,
+                }),
+            });
+            if (response.ok) {
+                if (window.confirm('회원가입 완료!\n로그인 페이지로 이동하시겠어요?')) {
+                    window.location.href = 'login.html';
+                }
+            } else alert('멘티 회원가입 중 오류가 발생했어요.\n잠시 후 다시 시도해주세요...');
+            //else alert('멘토 회원가입 중 오류가 발생했어요.\n잠시 후 다시 시도해주세요...');
+        };
+
+        const menteeSignUp = async (email, password, name, field, price, job, description) => {
+            // default data
+            const asked = [''];
+            const status = false;
+            const review = [''];
+
+            const req = {
+                asked,
+                description,
+                email,
+                field,
+                job,
+                name,
+                price,
+                pwd: password,
+                review,
+                status,
+            };
+            window.console.log(req);
+
+            const response = await fetch(`${API_URL}/mentee`, {
+                method: 'POST',
+                body: JSON.stringify(req),
+            });
+            if (response.ok) {
+                if (window.confirm('회원가입 완료!\n로그인 페이지로 이동하시겠어요?')) {
+                    window.location.href = 'login.html';
+                }
+            } else alert('멘티 회원가입 중 오류가 발생했어요.\n잠시 후 다시 시도해주세요...');
+        };
+
+        let role = '';
+
+        function handleRoleChange(selectedRole) {
+            var mentorRadioButton = document.getElementById('mentor');
+            var menteeRadioButton = document.getElementById('mentee');
+
+            if (selectedRole === 'mentor') {
+                // 멘토가 선택되면 멘티의 체크 해제
+                menteeRadioButton.checked = false;
+                role = 'mentor';
+            } else if (selectedRole === 'mentee') {
+                // 멘티가 선택되면 멘토의 체크 해제
+                mentorRadioButton.checked = false;
+                role = 'mentee';
+            }
+        }
+
+        async function getFormValues() {
+            //e.preventDefault();
+            // 폼 요소를 선택
+            const signupForm = document.getElementById('signupForm');
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            // 나머지 입력 필드들에 대해서도 필요한 작업 수행
+
+            // 가져온 값을 콘솔에 출력
+            console.log('멘토/멘티:', role);
+
+            console.log('이름:', name);
+            console.log('이메일:', email);
+            // 나머지 입력 필드들에 대해서도 필요한 작업 수행
+
+            const password = document.getElementById('password').value;
+            const passwordCheck = document.getElementById('passwordCheck').value;
+
+            const job = document.getElementById('job').value;
+            const price = document.getElementById('salary').value;
+            const description = document.getElementById('description').value;
+
+            if (password !== passwordCheck) {
+                alert('비밀번호가 같지 않습니다.');
+                return;
+            }
+
+            // 여기서 서버로 값을 전송하거나 다른 작업을 수행할 수 있습니다.
+            if (role === 'mentor') {
+                await mentorSignUp(email, password, name, field, price, job, description);
+            } else if (role === 'mentee') {
+                await menteeSignUp(email, password, name, field, price, job, description);
+            } else {
+                alert('멘토/멘티를 선택해주세요!');
+            }
+        }
+    </script>
 </html>

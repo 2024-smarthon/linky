@@ -39,11 +39,11 @@ const coffees = [
     },
 ];
 /******   API    **** */
-const API_URL = 'http://localhost:8080'; // 또는 IP 주소, 배포된 엔드포인트 주소
+const API_URL = 'http://127.0.0.1:5000';
 
-const getMentors = (filter) => {
-    const response = fetch(`${API_URL}/mentors?filter=${filter}`, {
-        method: 'GET',
+const getMentors = async () => {
+    const response = await fetch(`${API_URL}/mentorlist`, {
+        method: 'POST',
     });
     if (response.ok) return response;
     else alert('멘토 목록을 불러오는 중 오류가 발생했어요.\n잠시 후 다시 시도해주세요...');
@@ -82,11 +82,18 @@ const signUp = (id, password, passwordCheck) => {
 
 /******   API    **** */
 // src -> https://source.unsplash.com/random/?programming/300x300
-const showCoffees = () => {
+const showCoffees = async () => {
     let output = '';
-    coffees.forEach(
-        ({ name, image }, idx) =>
-            (output += `
+    let coffees = [];
+
+    try {
+        const res = await getMentors(); // getMentors가 비동기 함수일 경우
+        coffees = await res.json();
+        console.log(coffees);
+
+        coffees.forEach(
+            ({ name, image }, idx) =>
+                (output += `
               <div class="card">
                 <img class="card--avatar" src="https://source.unsplash.com/random/?programming/300x300""/>
                 <h1 class="card--title">${name}</h1>
@@ -94,9 +101,13 @@ const showCoffees = () => {
 
               </div>
               `)
-    );
+        );
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+
     // 버튼을 생성
-    var buttonElement = document.createElement('button');
+    const buttonElement = document.createElement('button');
     buttonElement.textContent = '로그인하러 가기'; // 버튼 텍스트 설정
 
     // 버튼에 이벤트 리스너 추가 (예: 클릭 시 알림)
@@ -105,7 +116,7 @@ const showCoffees = () => {
         window.location.href = './pages/sign-up.html';
     });
 
-    var isLogin = localStorage.getItem('isLogin');
+    const isLogin = localStorage.getItem('isLogin');
     console.log(isLogin);
     // 값이 있으면 "로그인 상태입니다." 출력, 없으면 "로그아웃 상태입니다." 출력
 
@@ -117,7 +128,11 @@ const showCoffees = () => {
     }
 };
 
-document.addEventListener('DOMContentLoaded', showCoffees);
+document.addEventListener('DOMContentLoaded', async () => {
+    await showCoffees();
+    // showCoffees 함수의 작업이 완료된 후에 실행될 로직
+    console.log('DOMContentLoaded event is fired');
+});
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {

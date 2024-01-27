@@ -28,10 +28,12 @@
             <div class="detail-image-cover"><img src="../images/detail-example.png" alt="멘토 상세 이미지" /></div>
             <div class="detail-container">
                 <div class="profile-container">
-                    <div class="profile-image"></div>
+                    <div class="profile-image">
+                        <img src="../images/icons//icon-72x72.png" alt="멘토 상세 이미지" />
+                    </div>
                     <div class="profile-text">
-                        <h3>AWS Vision Lab Researcher</h3>
-                        <p>Amazon Korea</p>
+                        <h3 class="profile-text-job"></h3>
+                        <p class="profile-text-name"></p>
                         <div class="button-container">
                             <button class="badge-button">Full Time</button>
                             <button class="badge-button">Remote</button>
@@ -55,7 +57,7 @@
                         </div>
                         <div>
                             <h6>저와 이야기하면 좋은 주제는요...</h6>
-                            <p class="tab-detail-text">
+                            <p class="tab-detail-subject">
                                 Project managers play the lead role in planning, executing, monitoring, controlling, and
                                 closing out projects. They are accountable for the entire project scope, the project
                                 team and resources, the project budget, and the success or failure of the project.
@@ -77,19 +79,10 @@
             </div>
         </main>
     </body>
-
+    2
     <script>
-        // 현재 URL에서 쿼리 문자열을 가져옴
-        const queryString = window.location.search;
-
-        // URLSearchParams를 사용하여 쿼리 문자열을 해석
-        const urlParams = new URLSearchParams(queryString);
-
-        // id 값을 가져오기
-        const personId = urlParams.get('id');
-
-        // personId를 사용하여 필요한 작업 수행
-        console.log('현재 페이지의 사람 ID:', personId);
+        const API_URL = 'http://127.0.0.1:5000';
+        let detailData = {};
 
         function showTab(tabId) {
             // 모든 탭 숨기기
@@ -116,5 +109,48 @@
                 selectedButton.classList.add('active');
             }
         }
+
+        const getMentorDetail = async (id) => {
+            const response = await fetch(`${API_URL}/mentorname?args1=${id}`, {
+                method: 'POST',
+            });
+            if (response.ok) return response;
+            else alert('멘토 상세 정보를 불러오는 중 오류가 발생했어요.\n잠시 후 다시 시도해주세요...');
+        };
+
+        const showDetail = async (id) => {
+            try {
+                const res = await getMentorDetail(id); // getMentors가 비동기 함수일 경우
+                detailData = await res.json();
+                console.log(detailData);
+
+                document.querySelector('.profile-text-job').innerHTML = detailData.job;
+
+                // p 요소에 innerHTML 적용
+                document.querySelector('.profile-text-name').innerHTML = `${detailData.name} | ${detailData.email}`;
+                document.querySelector('.tab-detail-text').innerHTML = detailData.description;
+                //document.querySelector('.tab-detail-subject').innerHTML = detailData.description;
+                document.querySelector('.tab-detail-subject').innerHTML =
+                    'Project managers play the lead role in planning, executing, monitoring, controlling, and\nclosing out projects. They are accountable for the entire project scope, the project\nteam and resources, the project budget, and the success or failure of the project.';
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // 현재 URL에서 쿼리 문자열을 가져옴
+            const queryString = window.location.search;
+
+            // URLSearchParams를 사용하여 쿼리 문자열을 해석
+            const urlParams = new URLSearchParams(queryString);
+
+            // id 값을 가져오기
+            const id = urlParams.get('id');
+
+            // id를 사용하여 필요한 작업 수행
+            console.log('현재 페이지의 사람 ID:', id);
+
+            await showDetail(id);
+        });
     </script>
 </html>
