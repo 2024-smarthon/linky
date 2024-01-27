@@ -5,7 +5,7 @@ async function generateText() {
     // keywordValue에는 input에 입력된 값이 들어있음;
     console.log(keywordValue);
 
-    const prompt = `${keywordValue}로 현업 멘토에게 할 질문 알려줘!`;
+    const prompt = `${keywordValue}로 현업 멘토에게 할 질문을 5가지만 알려줘!`;
 
     const apiKey = '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';
 
@@ -17,7 +17,7 @@ async function generateText() {
         },
         body: JSON.stringify({
             prompt,
-            max_tokens: 300,
+            max_tokens: 2048,
         }),
     });
 
