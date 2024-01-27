@@ -95,7 +95,26 @@ const showCoffees = () => {
               </div>
               `)
     );
-    container.innerHTML = output;
+    // 버튼을 생성
+    var buttonElement = document.createElement('button');
+    buttonElement.textContent = '로그인하러 가기'; // 버튼 텍스트 설정
+
+    // 버튼에 이벤트 리스너 추가 (예: 클릭 시 알림)
+    buttonElement.addEventListener('click', function () {
+        alert('버튼이 클릭되었습니다!');
+        window.location.href = './pages/sign-up.html';
+    });
+
+    var isLogin = localStorage.getItem('isLogin');
+    console.log(isLogin);
+    // 값이 있으면 "로그인 상태입니다." 출력, 없으면 "로그아웃 상태입니다." 출력
+
+    if (isLogin) {
+        container.innerHTML = output;
+    } else {
+        container.innerHTML = '';
+        container.appendChild(buttonElement);
+    }
 };
 
 document.addEventListener('DOMContentLoaded', showCoffees);

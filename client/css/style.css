@@ -17,6 +17,10 @@ main {
     text-align: center;
 }
 
+.mentor-list {
+    display: block;
+}
+
 #logo-image {
     width: 150px;
     height: 120px;
