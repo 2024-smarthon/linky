@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>링키 | 멘토 상세</title>
+        <link rel="stylesheet" href="../css/style.css" />
+    </head>
+
+    <body>
+        <main>
+            <nav>
+                <h1>
+                    <a href="../index.html"><img src="../images/logo.png" id="logo-image" /></a>
+                </h1>
+                <ul>
+                    <li><a href="./mypage.html">마이페이지</a></li>
+                    <li>
+                        <a
+                            href="https://smarthon-2024.notion.site/LINKY-2024-SMARTHON-b0ba5b70032c4d1db673b8cd8d9bab5d?pvs=4"
+                            target="_blank"
+                            >만든이들</a
+                        >
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="detail-image-cover"><img src="../images/detail-example.png" alt="멘토 상세 이미지" /></div>
+            <div class="detail-container">
+                <div class="profile-container">
+                    <div class="profile-image"></div>
+                    <div class="profile-text">
+                        <h3>AWS Vision Lab Researcher</h3>
+                        <p>Amazon Korea</p>
+                        <div class="button-container">
+                            <button class="badge-button">Full Time</button>
+                            <button class="badge-button">Remote</button>
+                            <button class="badge-button">Senior</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-container">
+                    <button class="tab-button active" onclick="showTab('tab1')">멘토 소개</button>
+                    <button class="tab-button" onclick="showTab('tab2')">멘토 후기</button>
+                </div>
+                <div class="tab-content" id="tab1" style="display: block">
+                    <div id="tab-one">
+                        <div>
+                            <h6>저는 어떤 사람이냐면요...</h6>
+                            <p class="tab-detail-text">
+                                Project managers play the lead role in planning, executing, monitoring, controlling, and
+                                closing out projects. They are accountable for the entire project scope, the project
+                                team and resources, the project budget, and the success or failure of the project.
+                            </p>
+                        </div>
+                        <div>
+                            <h6>저와 이야기하면 좋은 주제는요...</h6>
+                            <p class="tab-detail-text">
+                                Project managers play the lead role in planning, executing, monitoring, controlling, and
+                                closing out projects. They are accountable for the entire project scope, the project
+                                team and resources, the project budget, and the success or failure of the project.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab2" style="display: none">
+                    <h6>멘티들의 커피챗 후기를 볼까요?</h6>
+                    <ul class="review-container">
+                        <li class="review">친절하고 유익해요.</li>
+                        <li class="review">매우 지식이 있어요</li>
+                        <li class="review">기술력이 엄청나요.</li>
+                        <li class="review">경험이 풍부해요</li>
+                        <li class="review">다음에 또 만나고 싶어요!</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </body>
+
+    <script>
+        // 현재 URL에서 쿼리 문자열을 가져옴
+        const queryString = window.location.search;
+
+        // URLSearchParams를 사용하여 쿼리 문자열을 해석
+        const urlParams = new URLSearchParams(queryString);
+
+        // id 값을 가져오기
+        const personId = urlParams.get('id');
+
+        // personId를 사용하여 필요한 작업 수행
+        console.log('현재 페이지의 사람 ID:', personId);
+
+        function showTab(tabId) {
+            // 모든 탭 숨기기
+            var tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(function (content) {
+                content.style.display = 'none';
+            });
+
+            // 모든 탭 버튼의 활성화 클래스 제거
+            var tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(function (button) {
+                button.classList.remove('active');
+            });
+
+            // 선택한 탭 보이기
+            var selectedTab = document.getElementById(tabId);
+            if (selectedTab) {
+                selectedTab.style.display = 'block';
+            }
+
+            // 선택한 탭 버튼에 활성화 클래스 추가
+            var selectedButton = document.querySelector('[onclick="showTab(\'' + tabId + '\')"]');
+            if (selectedButton) {
+                selectedButton.classList.add('active');
+            }
+        }
+    </script>
+</html>
