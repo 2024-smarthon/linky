@@ -1,133 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>질문 리스트 생성</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4; /* 전체 페이지의 배경색 변경 */
-        }
-        
-        .container {
-            background-color: #fff; /* 제목 아래의 텍스트가 입력되는 전체 구역의 색 변경 */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
-            margin: 50px auto; /* 화면 중앙에 정렬 */
-        }
-        
-        h1 {
-            text-align: center;
-            color: #01A862;
-            font-family: Inter;
-            font-size: 32px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-            margin-bottom: 20px; /* 제목과 내용 사이 간격 추가 */
-        }
-        
-        .mentor-info {
-            margin-bottom: 20px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 20px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .mentor-info img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-right: 20px;
-            float: left;
-            border: 3px solid #01A862; /* 수정된 부분: 초록색 테두리 두께 조정 */
-        }
-        
-        .mentor-info h2 {
-            margin-top: 0;
-            margin-bottom: 5px;
-        }
-        
-        .mentor-info p {
-            margin: 0;
-        }
-        
-        .occupation {
-            color: black;
-        }
-        
-        .career {
-            color: #777;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-        
-        .career-details {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #fff;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            display: none;
-        }
-        
-        .keyword-input {
-            width: calc(100% - 24px);
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-top: 5px; /* 추가된 부분: label과 input 간격 조정 */
-        }
-        
-        .keyword-label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: block; /* 추가된 부분: label을 block 요소로 변경 */
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>질문 리스트 생성</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4; /* 전체 페이지의 배경색 변경 */
+            }
 
-        .mentor-info:before {
-            content: "";
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            border-radius: 8px; /* 수정된 부분: 테두리의 둥근 정도 조정 */
-            background: rgba(79, 157, 77, 0.10); /* 수정된 부분: 초록 띠의 색상 변경 */
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>질문 리스트 생성</h1>
-        
-        <div class="mentor-info" data-keywords="멘토, 프론트엔드, 개발자">
-            <img src="https://via.placeholder.com/100" alt="Mentor Image">
-            <div>
-                <h2>스마클</h2>
-                <p class="occupation">프론트엔드 개발자</p>
-                <p class="career">경력</p>
-                <div class="career-details">
-                    <p>세종대학교 (2000-2012)</p>
-                    <p>미리캔버스 (2012-2014)</p>
+            .container {
+                background-color: #fff; /* 제목 아래의 텍스트가 입력되는 전체 구역의 색 변경 */
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                width: 400px;
+                height: 100vh;
+
+                margin: 0 auto; /* 화면 중앙에 정렬 */
+                max-width: 350px;
+            }
+
+            h1 {
+                color: #01a862;
+                font-family: Inter;
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                margin-bottom: 20px; /* 제목과 내용 사이 간격 추가 */
+            }
+
+            .mentor-info {
+                margin-bottom: 20px;
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 20px;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .mentor-info img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                margin-right: 20px;
+                float: left;
+                border: 3px solid #01a862; /* 수정된 부분: 초록색 테두리 두께 조정 */
+            }
+
+            .mentor-info h2 {
+                margin-top: 0;
+                margin-bottom: 5px;
+            }
+
+            .mentor-info p {
+                margin: 0;
+            }
+
+            .occupation {
+                color: black;
+            }
+
+            .career {
+                color: #777;
+                cursor: pointer;
+                text-decoration: underline;
+            }
+
+            .career-details {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: #fff;
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                display: none;
+            }
+
+            .keyword-input {
+                width: calc(100% - 24px);
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-top: 5px; /* 추가된 부분: label과 input 간격 조정 */
+            }
+
+            .keyword-label {
+                font-weight: bold;
+                margin-bottom: 5px;
+                display: block; /* 추가된 부분: label을 block 요소로 변경 */
+            }
+
+            .mentor-info:before {
+                content: '';
+                position: absolute;
+                top: -3px;
+                left: -3px;
+                right: -3px;
+                bottom: -3px;
+                border-radius: 8px; /* 수정된 부분: 테두리의 둥근 정도 조정 */
+                background: rgba(79, 157, 77, 0.1); /* 수정된 부분: 초록 띠의 색상 변경 */
+            }
+
+            .button {
+                background-color: #01a862;
+                color: white;
+                padding: 4px 10px;
+                border: none;
+                border-radius: 7px;
+                margin-top: 7px;
+            }
+
+            .button2 {
+                background-color: #01a862;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 7px;
+                margin-top: 7px;
+            }
+
+            .button-wrapper {
+                display: flex;
+                justify-content: end;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>질문 리스트 생성</h1>
+
+            <div class="mentor-info" data-keywords="멘토, 프론트엔드, 개발자">
+                <img src="https://via.placeholder.com/100" alt="Mentor Image" />
+                <div>
+                    <h2>스마클</h2>
+                    <p class="occupation">프론트엔드 개발자</p>
+                    <p class="career">경력</p>
+                    <div class="career-details">
+                        <p>세종대학교 (2000-2012)</p>
+                        <p>미리캔버스 (2012-2014)</p>
+                    </div>
+                    <button onclick="logout()" class="button">로그아웃</button>
                 </div>
             </div>
-        </div>
-        
-        <label for="keywordInput" class="keyword-label">키워드 입력</label>
-        <input type="text" id="keywordInput" class="keyword-input" placeholder="Enter keyword" />
-        <input type="button" value="click" onclick="get()" /> 
-     </div>
 
-     <script src="../js/gpt.js"></script>
-</body>
+            <label for="keywordInput" class="keyword-label">키워드 입력</label>
+            <input type="text" id="keywordInput" class="keyword-input" placeholder="Enter keyword" />
+            <div class="button-wrapper">
+                <input type="button" value="질문 리스트업 받기" class="button2" onclick="generateText()" />
+            </div>
+            <div id="result"></div>
+        </div>
+
+        <script src="../js/gpt.js"></script>
+    </body>
 </html>

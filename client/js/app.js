@@ -112,7 +112,17 @@ const showCoffees = async () => {
 
     // 버튼에 이벤트 리스너 추가 (예: 클릭 시 알림)
     buttonElement.addEventListener('click', function () {
-        alert('버튼이 클릭되었습니다!');
+        //alert('버튼이 클릭되었습니다!');
+        window.location.href = './pages/login.html';
+    });
+
+    // 버튼을 생성
+    const buttonElement2 = document.createElement('button2');
+    buttonElement2.textContent = '회원가입하러 가기'; // 버튼 텍스트 설정
+
+    // 버튼에 이벤트 리스너 추가 (예: 클릭 시 알림)
+    buttonElement2.addEventListener('click', function () {
+        //alert('버튼이 클릭되었습니다!');
         window.location.href = './pages/sign-up.html';
     });
 
@@ -125,6 +135,7 @@ const showCoffees = async () => {
     } else {
         container.innerHTML = '';
         container.appendChild(buttonElement);
+        container.appendChild(buttonElement2);
     }
 };
 

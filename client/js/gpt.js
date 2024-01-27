@@ -1,11 +1,32 @@
+async function generateText() {
+    const keywordInput = document.getElementById('keywordInput');
+    // input에 입력된 값을 가져오기
+    const keywordValue = keywordInput.value;
+    // keywordValue에는 input에 입력된 값이 들어있음;
+    console.log(keywordValue);
+
+    const prompt = `${keywordValue}로 현업 멘토에게 할 질문 알려줘!`;
+
+    const apiKey = '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';
+
+    const response = await fetch('https://api.openai.com/v1/engines/gpt-3.5-turbo-instruct/completions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+            prompt,
+            max_tokens: 300,
+        }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+    document.getElementById('result').innerText = data.choices[0].text;
+}
+
 /*
-// OpenAI 패키지를 require로 가져오기
-const OpenAI = require('openai');
-
-// OpenAI API 키 설정
-const apiKey = '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';
-const openai = new OpenAI({ key: apiKey });
-
 async function startChat(keyword) {
   try {
     const response = await openai.Completion.create({
@@ -29,29 +50,27 @@ async function startChat(keyword) {
 }
 */
 
-
 // JavaScript를 사용하여 hover 이벤트 구현
 const mentorInfo = document.querySelector('.mentor-info');
 const careerDetails = mentorInfo.querySelector('.career-details');
 
-mentorInfo.addEventListener('mouseenter', function() {
+mentorInfo.addEventListener('mouseenter', function () {
     careerDetails.style.display = 'block';
 });
 
-mentorInfo.addEventListener('mouseleave', function() {
+mentorInfo.addEventListener('mouseleave', function () {
     careerDetails.style.display = 'none';
 });
-
-async function get() {
-  const keywordInput = document.getElementById('keywordInput');
-  // input에 입력된 값을 가져오기
-  const keywordValue = keywordInput.value;
-  // keywordValue에는 input에 입력된 값이 들어있음;
-  console.log(keywordValue);
-  // await startChat(keywordValue);
-}
 
 /*
 // ChatGPT 대화 시작
 startChat();
 */
+
+function logout() {
+    if (window.confirm('정말 로그아웃 하시겠습니까?')) {
+        localStorage.clear();
+
+        window.location.href = '../index.html';
+    }
+}
